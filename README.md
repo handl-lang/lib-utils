@@ -11,3 +11,7 @@ Part of the stdlib → `lib-*` split (ADR-0128); moved from
 - `src/str.hnl` — `str.*` interface (handls in stdlib `ops::strs`).
 - `src/utils.hnl` — the aggregate package interface (`cap` declarations).
 - `src/math.test.hnl` — the `math` test suite.
+
+## License
+
+MIT.
