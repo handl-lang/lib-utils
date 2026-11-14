@@ -1,13 +1,13 @@
 --- math -- numeric utility functions for the handl runtime.
 ---
---- Single source of truth for the `math` stdlib interface: 62 functions
+--- Single source of truth for the `math` stdlib interface: 67 functions
 --- covering arithmetic, bitwise integer ops, constants, exponential/logarithmic,
 --- rounding, trigonometry, and predicates. The Rust bridge in `plugin-lib-utils`
 --- loads this file via `include_str!`, parses the `cap` declarations for
 --- the plugin capability surface, and registers the Rust handls (handlers)
 --- in an `OpRegistry` that dispatches each `op` to its native `f64` impl.
 ---
---- All 62 functions are FFI atoms (they call `f64` methods or Rust
+--- All 67 functions are FFI atoms (they call `f64` methods or Rust
 --- arithmetic that cannot be expressed as pure handl arrows without
 --- losing the exact `TypeMismatch` error messages the tests rely on).
 --- The `op`/`handl` declaration form (ADR-0077 Phase 2) declares the
@@ -25,6 +25,8 @@
 --- math.acos -- arc cosine of a number.
 --- math.atan -- arc tangent of a number.
 --- math.atan2 -- arc tangent of y/x using signs of both arguments.
+--- math.copysign -- magnitude of the first argument with the sign of the second.
+--- math.nextafter -- one-ULP step from the first argument toward the second.
 --- math.asinh -- inverse hyperbolic sine.
 --- math.acosh -- inverse hyperbolic cosine.
 --- math.atanh -- inverse hyperbolic tangent.
@@ -40,6 +42,8 @@
 --- math.div -- divide two numbers.
 --- math.e -- Euler's number (e).
 --- math.exp -- exponential function e^x.
+--- math.exp2 -- base-2 exponential function 2^x.
+--- math.expm1 -- e^x - 1, accurate for small x.
 --- math.factorial -- factorial of a non-negative integer.
 --- math.floor -- floor of a number.
 --- math.floor_div -- integer (floored) division.
@@ -54,6 +58,7 @@
 --- math.lcm -- least common multiple of two integers.
 --- math.lerp -- linear interpolation between two values.
 --- math.log -- natural logarithm of a number.
+--- math.log1p -- natural logarithm of 1 + x, accurate for small x.
 --- math.log10 -- base-10 logarithm of a number.
 --- math.log2 -- base-2 logarithm of a number.
 --- math.map_range -- map a value from one range to another.
@@ -87,6 +92,8 @@ cap "math.asin"
 cap "math.acos"
 cap "math.atan"
 cap "math.atan2"
+cap "math.copysign"
+cap "math.nextafter"
 cap "math.asinh"
 cap "math.acosh"
 cap "math.atanh"
@@ -102,6 +109,8 @@ cap "math.degrees"
 cap "math.div"
 cap "math.e"
 cap "math.exp"
+cap "math.exp2"
+cap "math.expm1"
 cap "math.factorial"
 cap "math.floor"
 cap "math.floor_div"
@@ -116,6 +125,7 @@ cap "math.is_nan"
 cap "math.lcm"
 cap "math.lerp"
 cap "math.log"
+cap "math.log1p"
 cap "math.log10"
 cap "math.log2"
 cap "math.map_range"
@@ -160,6 +170,10 @@ op "math.atan" : Float -> Float
   guarantee: True
 op "math.atan2" : (Float * Float) -> Float
   guarantee: True
+op "math.copysign" : (Float * Float) -> Float
+  guarantee: True
+op "math.nextafter" : (Float * Float) -> Float
+  guarantee: True
 op "math.asinh" : Float -> Float
   guarantee: True
 op "math.acosh" : Float -> Float
@@ -190,6 +204,10 @@ op "math.e" : Unit -> Float
   guarantee: True
 op "math.exp" : Float -> Float
   guarantee: True
+op "math.exp2" : Float -> Float
+  guarantee: True
+op "math.expm1" : Float -> Float
+  guarantee: True
 op "math.factorial" : Float -> Float
   guarantee: True
 op "math.floor" : Float -> Float
@@ -217,6 +235,8 @@ op "math.lcm" : (Float * Float) -> Float
 op "math.lerp" : (Float * Float * Float) -> Float
   guarantee: True
 op "math.log" : Float -> Float
+  guarantee: True
+op "math.log1p" : Float -> Float
   guarantee: True
 op "math.log10" : Float -> Float
   guarantee: True
@@ -273,6 +293,8 @@ handle "math.asin" with rust_math_asin
 handle "math.acos" with rust_math_acos
 handle "math.atan" with rust_math_atan
 handle "math.atan2" with rust_math_atan2
+handle "math.copysign" with rust_math_copysign
+handle "math.nextafter" with rust_math_nextafter
 handle "math.asinh" with rust_math_asinh
 handle "math.acosh" with rust_math_acosh
 handle "math.atanh" with rust_math_atanh
@@ -288,6 +310,8 @@ handle "math.degrees" with rust_math_degrees
 handle "math.div" with rust_math_div
 handle "math.e" with rust_math_e
 handle "math.exp" with rust_math_exp
+handle "math.exp2" with rust_math_exp2
+handle "math.expm1" with rust_math_expm1
 handle "math.factorial" with rust_math_factorial
 handle "math.floor" with rust_math_floor
 handle "math.floor_div" with rust_math_floor_div
@@ -302,6 +326,7 @@ handle "math.is_nan" with rust_math_is_nan
 handle "math.lcm" with rust_math_lcm
 handle "math.lerp" with rust_math_lerp
 handle "math.log" with rust_math_log
+handle "math.log1p" with rust_math_log1p
 handle "math.log10" with rust_math_log10
 handle "math.log2" with rust_math_log2
 handle "math.map_range" with rust_math_map_range
