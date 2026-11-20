@@ -1,1 +1,1 @@
-{ modules: ["bool", "math", "str"] }
+{ modules: ["bool", "math", "str"], description: "Stdlib utility surface — bool, math, str aggregates.", license: "MIT" }
