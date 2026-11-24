@@ -104,95 +104,95 @@ cap "str.split_whitespace"
 cap "str.truncate"
 cap "str.slugify"
 cap "str.word_wrap"
-op "str.upper" : String -> String
+op "str.upper" : String ~> String
   guarantee: True
-op "str.lower" : String -> String
+op "str.lower" : String ~> String
   guarantee: True
-op "str.trim" : String -> String
+op "str.trim" : String ~> String
   guarantee: True
-op "str.trim_start" : String -> String
+op "str.trim_start" : String ~> String
   guarantee: True
-op "str.trim_end" : String -> String
+op "str.trim_end" : String ~> String
   guarantee: True
-op "str.trim_matches" : (String * String) -> String
+op "str.trim_matches" : (String * String) ~> String
   guarantee: True
-op "str.reverse" : String -> String
+op "str.reverse" : String ~> String
   guarantee: True
-op "str.length" : String -> Float
+op "str.length" : String ~> Float
   guarantee: True
-op "str.concat" : (String * String) -> String
+op "str.concat" : (String * String) ~> String
   guarantee: True
-op "str.is_empty" : String -> Bool
+op "str.is_empty" : String ~> Bool
   guarantee: True
-op "str.equals" : (String * String) -> Bool
+op "str.equals" : (String * String) ~> Bool
   guarantee: True
-op "str.is_alpha" : String -> Bool
+op "str.is_alpha" : String ~> Bool
   guarantee: True
-op "str.is_numeric" : String -> Bool
+op "str.is_numeric" : String ~> Bool
   guarantee: True
-op "str.is_alphanumeric" : String -> Bool
+op "str.is_alphanumeric" : String ~> Bool
   guarantee: True
-op "str.capitalize" : String -> String
+op "str.capitalize" : String ~> String
   guarantee: True
-op "str.title_case" : String -> String
+op "str.title_case" : String ~> String
   guarantee: True
-op "str.snake_case" : String -> String
+op "str.snake_case" : String ~> String
   guarantee: True
-op "str.camel_case" : String -> String
+op "str.camel_case" : String ~> String
   guarantee: True
-op "str.pascal_case" : String -> String
+op "str.pascal_case" : String ~> String
   guarantee: True
-op "str.kebab_case" : String -> String
+op "str.kebab_case" : String ~> String
   guarantee: True
-op "str.contains" : (String * String) -> Bool
+op "str.contains" : (String * String) ~> Bool
   guarantee: True
-op "str.starts_with" : (String * String) -> Bool
+op "str.starts_with" : (String * String) ~> Bool
   guarantee: True
-op "str.ends_with" : (String * String) -> Bool
+op "str.ends_with" : (String * String) ~> Bool
   guarantee: True
-op "str.count" : (String * String) -> Float
+op "str.count" : (String * String) ~> Float
   guarantee: True
-op "str.find" : (String * String) -> Float
+op "str.find" : (String * String) ~> Float
   guarantee: True
-op "str.rfind" : (String * String) -> Float
+op "str.rfind" : (String * String) ~> Float
   guarantee: True
-op "str.levenshtein" : (String * String) -> Float
+op "str.levenshtein" : (String * String) ~> Float
   guarantee: True
-op "str.similarity" : (String * String) -> Float
+op "str.similarity" : (String * String) ~> Float
   guarantee: True
-op "str.split" : (String * String) -> (List String)
+op "str.split" : (String * String) ~> (List String)
   guarantee: True
-op "str.join" : ((List String) * String) -> String
+op "str.join" : ((List String) * String) ~> String
   guarantee: True
-op "str.replace" : (String * String * String) -> String
+op "str.replace" : (String * String * String) ~> String
   guarantee: True
-op "str.replace_first" : (String * String * String) -> String
+op "str.replace_first" : (String * String * String) ~> String
   guarantee: True
-op "str.repeat" : (String * Float) -> String
+op "str.repeat" : (String * Float) ~> String
   guarantee: True
-op "str.char_at" : (String * Float) -> String
+op "str.char_at" : (String * Float) ~> String
   guarantee: True
-op "str.slice" : (String * Float * Float) -> String
+op "str.slice" : (String * Float * Float) ~> String
   guarantee: True
-op "str.pad_left" : (String * Float * String) -> String
+op "str.pad_left" : (String * Float * String) ~> String
   guarantee: True
-op "str.pad_right" : (String * Float * String) -> String
+op "str.pad_right" : (String * Float * String) ~> String
   guarantee: True
-op "str.strip_prefix" : (String * String) -> String
+op "str.strip_prefix" : (String * String) ~> String
   guarantee: True
-op "str.strip_suffix" : (String * String) -> String
+op "str.strip_suffix" : (String * String) ~> String
   guarantee: True
-op "str.lines" : String -> (List String)
+op "str.lines" : String ~> (List String)
   guarantee: True
-op "str.split_at" : (String * Float) -> (List String)
+op "str.split_at" : (String * Float) ~> (List String)
   guarantee: True
-op "str.split_whitespace" : String -> (List String)
+op "str.split_whitespace" : String ~> (List String)
   guarantee: True
-op "str.truncate" : (String * Float) -> String
+op "str.truncate" : (String * Float) ~> String
   guarantee: True
-op "str.slugify" : String -> String
+op "str.slugify" : String ~> String
   guarantee: True
-op "str.word_wrap" : (String * Float) -> String
+op "str.word_wrap" : (String * Float) ~> String
   guarantee: True
 handle "str.upper" with rust_str_upper
 handle "str.lower" with rust_str_lower

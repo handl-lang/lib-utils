@@ -148,139 +148,139 @@ cap "math.tan"
 cap "math.tanh"
 cap "math.tau"
 cap "math.trunc"
-op "math.abs" : Float -> Float
+op "math.abs" : Float ~> Float
   guarantee: True
-op "math.add" : (Float * Float) -> Float
+op "math.add" : (Float * Float) ~> Float
   guarantee: True
-op "math.ceil" : Float -> Float
+op "math.ceil" : Float ~> Float
   guarantee: True
-op "math.clamp" : (Float * Float * Float) -> Float
+op "math.clamp" : (Float * Float * Float) ~> Float
   guarantee: True
-op "math.cos" : Float -> Float
+op "math.cos" : Float ~> Float
   guarantee: True
-op "math.cosh" : Float -> Float
+op "math.cosh" : Float ~> Float
   guarantee: True
-op "math.cbrt" : Float -> Float
+op "math.cbrt" : Float ~> Float
   guarantee: True
-op "math.asin" : Float -> Float
+op "math.asin" : Float ~> Float
   guarantee: True
-op "math.acos" : Float -> Float
+op "math.acos" : Float ~> Float
   guarantee: True
-op "math.atan" : Float -> Float
+op "math.atan" : Float ~> Float
   guarantee: True
-op "math.atan2" : (Float * Float) -> Float
+op "math.atan2" : (Float * Float) ~> Float
   guarantee: True
-op "math.copysign" : (Float * Float) -> Float
+op "math.copysign" : (Float * Float) ~> Float
   guarantee: True
-op "math.nextafter" : (Float * Float) -> Float
+op "math.nextafter" : (Float * Float) ~> Float
   guarantee: True
-op "math.asinh" : Float -> Float
+op "math.asinh" : Float ~> Float
   guarantee: True
-op "math.acosh" : Float -> Float
+op "math.acosh" : Float ~> Float
   guarantee: True
-op "math.atanh" : Float -> Float
+op "math.atanh" : Float ~> Float
   guarantee: True
-op "math.bit_and" : (Int * Int) -> Int
+op "math.bit_and" : (Int * Int) ~> Int
   guarantee: True
-op "math.bit_not" : Int -> Int
+op "math.bit_not" : Int ~> Int
   guarantee: True
-op "math.bit_or" : (Int * Int) -> Int
+op "math.bit_or" : (Int * Int) ~> Int
   guarantee: True
-op "math.bit_xor" : (Int * Int) -> Int
+op "math.bit_xor" : (Int * Int) ~> Int
   guarantee: True
-op "math.shl" : (Int * Int) -> Int
+op "math.shl" : (Int * Int) ~> Int
   guarantee: True
-op "math.shr" : (Int * Int) -> Int
+op "math.shr" : (Int * Int) ~> Int
   guarantee: True
-op "math.rotl32" : (Int * Int) -> Int
+op "math.rotl32" : (Int * Int) ~> Int
   guarantee: True
-op "math.u32" : Int -> Int
+op "math.u32" : Int ~> Int
   guarantee: True
-op "math.degrees" : Float -> Float
+op "math.degrees" : Float ~> Float
   guarantee: True
-op "math.div" : (Float * Float) -> Float
+op "math.div" : (Float * Float) ~> Float
   guarantee: True
-op "math.e" : Unit -> Float
+op "math.e" : Unit ~> Float
   guarantee: True
-op "math.exp" : Float -> Float
+op "math.exp" : Float ~> Float
   guarantee: True
-op "math.exp2" : Float -> Float
+op "math.exp2" : Float ~> Float
   guarantee: True
-op "math.expm1" : Float -> Float
+op "math.expm1" : Float ~> Float
   guarantee: True
-op "math.factorial" : Float -> Float
+op "math.factorial" : Float ~> Float
   guarantee: True
-op "math.floor" : Float -> Float
+op "math.floor" : Float ~> Float
   guarantee: True
-op "math.floor_div" : (Float * Float) -> Float
+op "math.floor_div" : (Float * Float) ~> Float
   guarantee: True
-op "math.fract" : Float -> Float
+op "math.fract" : Float ~> Float
   guarantee: True
-op "math.gcd" : (Float * Float) -> Float
+op "math.gcd" : (Float * Float) ~> Float
   guarantee: True
-op "math.hypot" : (Float * Float) -> Float
+op "math.hypot" : (Float * Float) ~> Float
   guarantee: True
-op "math.infinity" : Unit -> Float
+op "math.infinity" : Unit ~> Float
   guarantee: True
-op "math.is_finite" : Float -> Bool
+op "math.is_finite" : Float ~> Bool
   guarantee: True
-op "math.is_infinite" : Float -> Bool
+op "math.is_infinite" : Float ~> Bool
   guarantee: True
-op "math.is_integer" : Float -> Bool
+op "math.is_integer" : Float ~> Bool
   guarantee: True
-op "math.is_nan" : Float -> Bool
+op "math.is_nan" : Float ~> Bool
   guarantee: True
-op "math.lcm" : (Float * Float) -> Float
+op "math.lcm" : (Float * Float) ~> Float
   guarantee: True
-op "math.lerp" : (Float * Float * Float) -> Float
+op "math.lerp" : (Float * Float * Float) ~> Float
   guarantee: True
-op "math.log" : Float -> Float
+op "math.log" : Float ~> Float
   guarantee: True
-op "math.log1p" : Float -> Float
+op "math.log1p" : Float ~> Float
   guarantee: True
-op "math.log10" : Float -> Float
+op "math.log10" : Float ~> Float
   guarantee: True
-op "math.log2" : Float -> Float
+op "math.log2" : Float ~> Float
   guarantee: True
-op "math.map_range" : (Float * Float * Float * Float * Float) -> Float
+op "math.map_range" : (Float * Float * Float * Float * Float) ~> Float
   guarantee: True
-op "math.max" : (Float * Float) -> Float
+op "math.max" : (Float * Float) ~> Float
   guarantee: True
-op "math.min" : (Float * Float) -> Float
+op "math.min" : (Float * Float) ~> Float
   guarantee: True
-op "math.mod" : (Float * Float) -> Float
+op "math.mod" : (Float * Float) ~> Float
   guarantee: True
-op "math.mul" : (Float * Float) -> Float
+op "math.mul" : (Float * Float) ~> Float
   guarantee: True
-op "math.nan" : Unit -> Float
+op "math.nan" : Unit ~> Float
   guarantee: True
-op "math.pi" : Unit -> Float
+op "math.pi" : Unit ~> Float
   guarantee: True
-op "math.pow" : (Float * Float) -> Float
+op "math.pow" : (Float * Float) ~> Float
   guarantee: True
-op "math.radians" : Float -> Float
+op "math.radians" : Float ~> Float
   guarantee: True
-op "math.round" : Float -> Float
+op "math.round" : Float ~> Float
   guarantee: True
-op "math.round_to" : (Float * Float) -> Float
+op "math.round_to" : (Float * Float) ~> Float
   guarantee: True
-op "math.sign" : Float -> Float
+op "math.sign" : Float ~> Float
   guarantee: True
-op "math.sin" : Float -> Float
+op "math.sin" : Float ~> Float
   guarantee: True
-op "math.sinh" : Float -> Float
+op "math.sinh" : Float ~> Float
   guarantee: True
-op "math.sqrt" : Float -> Float
+op "math.sqrt" : Float ~> Float
   guarantee: True
-op "math.sub" : (Float * Float) -> Float
+op "math.sub" : (Float * Float) ~> Float
   guarantee: True
-op "math.tan" : Float -> Float
+op "math.tan" : Float ~> Float
   guarantee: True
-op "math.tanh" : Float -> Float
+op "math.tanh" : Float ~> Float
   guarantee: True
-op "math.tau" : Unit -> Float
+op "math.tau" : Unit ~> Float
   guarantee: True
-op "math.trunc" : Float -> Float
+op "math.trunc" : Float ~> Float
   guarantee: True
 handle "math.abs" with rust_math_abs
 handle "math.add" with rust_math_add
