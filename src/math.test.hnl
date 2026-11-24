@@ -6,60 +6,60 @@
 --- stdlib chain, so no import is needed (same convention as
 --- `perlin.test.hnl`).
 
-test_bit_and_both_set := assert math.bit_and(1, 1) = 1
+test_bit_and_both_set := assert math.bit_and(1, 1) == 1
 
-test_bit_and_clears := assert math.bit_and(12, 10) = 8
+test_bit_and_clears := assert math.bit_and(12, 10) == 8
 
-test_bit_and_mask_low7 := assert math.bit_and(129, 127) = 1
+test_bit_and_mask_low7 := assert math.bit_and(129, 127) == 1
 
-test_bit_and_negative := assert math.bit_and(-1, 255) = 255
+test_bit_and_negative := assert math.bit_and(-1, 255) == 255
 
-test_bit_xor_differs := assert math.bit_xor(1, 0) = 1
+test_bit_xor_differs := assert math.bit_xor(1, 0) == 1
 
-test_bit_xor_self := assert math.bit_xor(12, 12) = 0
+test_bit_xor_self := assert math.bit_xor(12, 12) == 0
 
-test_bit_xor_mask_byte := assert math.bit_xor(72, 55) = 127
+test_bit_xor_mask_byte := assert math.bit_xor(72, 55) == 127
 
-test_bit_not_zero := assert math.bit_not(0) = -1
+test_bit_not_zero := assert math.bit_not(0) == -1
 
-test_bit_not_neg_one := assert math.bit_not(-1) = 0
+test_bit_not_neg_one := assert math.bit_not(-1) == 0
 
-test_rotl32_zero := assert math.rotl32(305419896, 0) = 305419896
+test_rotl32_zero := assert math.rotl32(305419896, 0) == 305419896
 
-test_rotl32_five := assert math.rotl32(305419896, 5) = 1183502082
+test_rotl32_five := assert math.rotl32(305419896, 5) == 1183502082
 
-test_rotl32_high_bit := assert math.rotl32(2147483648, 1) = 1
+test_rotl32_high_bit := assert math.rotl32(2147483648, 1) == 1
 
-test_rotl32_wraps_at_32 := assert math.rotl32(3735928559, 32) = 3735928559
+test_rotl32_wraps_at_32 := assert math.rotl32(3735928559, 32) == 3735928559
 
-test_rotl32_thirty_three := assert math.rotl32(1, 33) = 2
+test_rotl32_thirty_three := assert math.rotl32(1, 33) == 2
 
-test_rotl32_negative_input := assert math.rotl32(-1, 1) = 4294967295
+test_rotl32_negative_input := assert math.rotl32(-1, 1) == 4294967295
 
-test_u32_zero := assert math.u32(0) = 0
+test_u32_zero := assert math.u32(0) == 0
 
-test_u32_negative_one := assert math.u32(-1) = 4294967295
+test_u32_negative_one := assert math.u32(-1) == 4294967295
 
-test_u32_wraps_above_range := assert math.u32(4294967296) = 0
+test_u32_wraps_above_range := assert math.u32(4294967296) == 0
 
-test_u32_wraps_remainder := assert math.u32(4294967303) = 7
+test_u32_wraps_remainder := assert math.u32(4294967303) == 7
 
-test_exp2_exact := assert math.exp2(3) = 8
+test_exp2_exact := assert math.exp2(3) == 8
 
-test_exp2_fraction := assert math.exp2(0.5) = 1.4142135623730951
+test_exp2_fraction := assert math.exp2(0.5) == 1.4142135623730951
 
-test_expm1_zero := assert math.expm1(0) = 0
+test_expm1_zero := assert math.expm1(0) == 0
 
-test_expm1_tiny := assert math.expm1(0.00000000000000000001) = 0.00000000000000000001
+test_expm1_tiny := assert math.expm1(0.00000000000000000001) == 0.00000000000000000001
 
-test_log1p_zero := assert math.log1p(0) = 0
+test_log1p_zero := assert math.log1p(0) == 0
 
-test_log1p_one := assert math.log1p(1) = 0.6931471805599453
+test_log1p_one := assert math.log1p(1) == 0.6931471805599453
 
-test_copysign_negative := assert math.copysign(3, -1) = -3
+test_copysign_negative := assert math.copysign(3, -1) == -3
 
-test_copysign_positive := assert math.copysign(-3, 1) = 3
+test_copysign_positive := assert math.copysign(-3, 1) == 3
 
-test_nextafter_up := assert math.nextafter(1, 2) = 1.0000000000000002
+test_nextafter_up := assert math.nextafter(1, 2) == 1.0000000000000002
 
-test_nextafter_equal := assert math.nextafter(2, 2) = 2
+test_nextafter_equal := assert math.nextafter(2, 2) == 2
