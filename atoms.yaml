@@ -1,8 +1,9 @@
-# lib-utils atom spec (P-013/T-149) — math atoms (67), the spec-driven
-# scale pilot. Multi-module lib: `modules:` maps module name -> atoms.
-# `sig` = handl signature (~> canonical), `impl` = key into
-# ops/math.rs `math_impls()`, `total` replaces the `guarantee: True`
-# decl clauses (all 67 math ops carry one). `str`/`bool` migrate later.
+# lib-utils atom spec (P-013/T-149/T-151) — math atoms (67) + str atoms
+# (45), the spec-driven scale pilot. Multi-module lib: `modules:` maps module name -> atoms.
+# `sig` = handl signature (~> canonical), `impl` = key into the
+# module impl table (`ops/math.rs` `math_impls()`; `str` keys target a
+# future `strs_impls()`), `total` replaces the `guarantee: True`
+# decl clauses (all math/str ops carry one). `bool` stays handl.
 modules:
   math:
     atoms:
@@ -273,4 +274,186 @@ modules:
       - name: math.trunc
         sig: "Float ~> Float"
         impl: math_trunc
+        total: true
+  str:
+    atoms:
+      - name: str.upper
+        sig: "String ~> String"
+        impl: str_upper
+        total: true
+      - name: str.lower
+        sig: "String ~> String"
+        impl: str_lower
+        total: true
+      - name: str.trim
+        sig: "String ~> String"
+        impl: str_trim
+        total: true
+      - name: str.trim_start
+        sig: "String ~> String"
+        impl: str_trim_start
+        total: true
+      - name: str.trim_end
+        sig: "String ~> String"
+        impl: str_trim_end
+        total: true
+      - name: str.trim_matches
+        sig: "(String * String) ~> String"
+        impl: str_trim_matches
+        total: true
+      - name: str.reverse
+        sig: "String ~> String"
+        impl: str_reverse
+        total: true
+      - name: str.length
+        sig: "String ~> Float"
+        impl: str_length
+        total: true
+      - name: str.concat
+        sig: "(String * String) ~> String"
+        impl: str_concat
+        total: true
+      - name: str.is_empty
+        sig: "String ~> Bool"
+        impl: str_is_empty
+        total: true
+      - name: str.equals
+        sig: "(String * String) ~> Bool"
+        impl: str_equals
+        total: true
+      - name: str.is_alpha
+        sig: "String ~> Bool"
+        impl: str_is_alpha
+        total: true
+      - name: str.is_numeric
+        sig: "String ~> Bool"
+        impl: str_is_numeric
+        total: true
+      - name: str.is_alphanumeric
+        sig: "String ~> Bool"
+        impl: str_is_alphanumeric
+        total: true
+      - name: str.capitalize
+        sig: "String ~> String"
+        impl: str_capitalize
+        total: true
+      - name: str.title_case
+        sig: "String ~> String"
+        impl: str_title_case
+        total: true
+      - name: str.snake_case
+        sig: "String ~> String"
+        impl: str_snake_case
+        total: true
+      - name: str.camel_case
+        sig: "String ~> String"
+        impl: str_camel_case
+        total: true
+      - name: str.pascal_case
+        sig: "String ~> String"
+        impl: str_pascal_case
+        total: true
+      - name: str.kebab_case
+        sig: "String ~> String"
+        impl: str_kebab_case
+        total: true
+      - name: str.contains
+        sig: "(String * String) ~> Bool"
+        impl: str_contains
+        total: true
+      - name: str.starts_with
+        sig: "(String * String) ~> Bool"
+        impl: str_starts_with
+        total: true
+      - name: str.ends_with
+        sig: "(String * String) ~> Bool"
+        impl: str_ends_with
+        total: true
+      - name: str.count
+        sig: "(String * String) ~> Float"
+        impl: str_count
+        total: true
+      - name: str.find
+        sig: "(String * String) ~> Float"
+        impl: str_find
+        total: true
+      - name: str.rfind
+        sig: "(String * String) ~> Float"
+        impl: str_rfind
+        total: true
+      - name: str.levenshtein
+        sig: "(String * String) ~> Float"
+        impl: str_levenshtein
+        total: true
+      - name: str.similarity
+        sig: "(String * String) ~> Float"
+        impl: str_similarity
+        total: true
+      - name: str.split
+        sig: "(String * String) ~> (List String)"
+        impl: str_split
+        total: true
+      - name: str.join
+        sig: "((List String) * String) ~> String"
+        impl: str_join
+        total: true
+      - name: str.replace
+        sig: "(String * String * String) ~> String"
+        impl: str_replace
+        total: true
+      - name: str.replace_first
+        sig: "(String * String * String) ~> String"
+        impl: str_replace_first
+        total: true
+      - name: str.repeat
+        sig: "(String * Float) ~> String"
+        impl: str_repeat
+        total: true
+      - name: str.char_at
+        sig: "(String * Float) ~> String"
+        impl: str_char_at
+        total: true
+      - name: str.slice
+        sig: "(String * Float * Float) ~> String"
+        impl: str_slice
+        total: true
+      - name: str.pad_left
+        sig: "(String * Float * String) ~> String"
+        impl: str_pad_left
+        total: true
+      - name: str.pad_right
+        sig: "(String * Float * String) ~> String"
+        impl: str_pad_right
+        total: true
+      - name: str.strip_prefix
+        sig: "(String * String) ~> String"
+        impl: str_strip_prefix
+        total: true
+      - name: str.strip_suffix
+        sig: "(String * String) ~> String"
+        impl: str_strip_suffix
+        total: true
+      - name: str.lines
+        sig: "String ~> (List String)"
+        impl: str_lines
+        total: true
+      - name: str.split_at
+        sig: "(String * Float) ~> (List String)"
+        impl: str_split_at
+        total: true
+      - name: str.split_whitespace
+        sig: "String ~> (List String)"
+        impl: str_split_whitespace
+        total: true
+      - name: str.truncate
+        sig: "(String * Float) ~> String"
+        impl: str_truncate
+        total: true
+      - name: str.slugify
+        sig: "String ~> String"
+        impl: str_slugify
+        total: true
+      - name: str.word_wrap
+        sig: "(String * Float) ~> String"
+        impl: str_word_wrap
         total: true
