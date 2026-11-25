@@ -1,459 +1,277 @@
-# lib-utils atom spec (P-013/T-149/T-151) — math atoms (67) + str atoms
-# (45), the spec-driven scale pilot. Multi-module lib: `modules:` maps module name -> atoms.
-# `sig` = handl signature (~> canonical), `impl` = key into the
-# module impl table (`ops/math.rs` `math_impls()`; `str` keys target a
-# future `strs_impls()`), `total` replaces the `guarantee: True`
-# decl clauses (all math/str ops carry one). `bool` stays handl.
-modules:
-  math:
-    atoms:
-      - name: math.abs
-        sig: "Float ~> Float"
-        impl: math_abs
-        total: true
-      - name: math.add
-        sig: "(Float * Float) ~> Float"
-        impl: math_add
-        total: true
-      - name: math.ceil
-        sig: "Float ~> Float"
-        impl: math_ceil
-        total: true
-      - name: math.clamp
-        sig: "(Float * Float * Float) ~> Float"
-        impl: math_clamp
-        total: true
-      - name: math.cos
-        sig: "Float ~> Float"
-        impl: math_cos
-        total: true
-      - name: math.cosh
-        sig: "Float ~> Float"
-        impl: math_cosh
-        total: true
-      - name: math.cbrt
-        sig: "Float ~> Float"
-        impl: math_cbrt
-        total: true
-      - name: math.asin
-        sig: "Float ~> Float"
-        impl: math_asin
-        total: true
-      - name: math.acos
-        sig: "Float ~> Float"
-        impl: math_acos
-        total: true
-      - name: math.atan
-        sig: "Float ~> Float"
-        impl: math_atan
-        total: true
-      - name: math.atan2
-        sig: "(Float * Float) ~> Float"
-        impl: math_atan2
-        total: true
-      - name: math.copysign
-        sig: "(Float * Float) ~> Float"
-        impl: math_copysign
-        total: true
-      - name: math.nextafter
-        sig: "(Float * Float) ~> Float"
-        impl: math_nextafter
-        total: true
-      - name: math.asinh
-        sig: "Float ~> Float"
-        impl: math_asinh
-        total: true
-      - name: math.acosh
-        sig: "Float ~> Float"
-        impl: math_acosh
-        total: true
-      - name: math.atanh
-        sig: "Float ~> Float"
-        impl: math_atanh
-        total: true
-      - name: math.bit_and
-        sig: "(Int * Int) ~> Int"
-        impl: math_bit_and
-        total: true
-      - name: math.bit_not
-        sig: "Int ~> Int"
-        impl: math_bit_not
-        total: true
-      - name: math.bit_or
-        sig: "(Int * Int) ~> Int"
-        impl: math_bit_or
-        total: true
-      - name: math.bit_xor
-        sig: "(Int * Int) ~> Int"
-        impl: math_bit_xor
-        total: true
-      - name: math.shl
-        sig: "(Int * Int) ~> Int"
-        impl: math_shl
-        total: true
-      - name: math.shr
-        sig: "(Int * Int) ~> Int"
-        impl: math_shr
-        total: true
-      - name: math.rotl32
-        sig: "(Int * Int) ~> Int"
-        impl: math_rotl32
-        total: true
-      - name: math.u32
-        sig: "Int ~> Int"
-        impl: math_u32
-        total: true
-      - name: math.degrees
-        sig: "Float ~> Float"
-        impl: math_degrees
-        total: true
-      - name: math.div
-        sig: "(Float * Float) ~> Float"
-        impl: math_div
-        total: true
-      - name: math.e
-        sig: "Unit ~> Float"
-        impl: math_e
-        total: true
-      - name: math.exp
-        sig: "Float ~> Float"
-        impl: math_exp
-        total: true
-      - name: math.exp2
-        sig: "Float ~> Float"
-        impl: math_exp2
-        total: true
-      - name: math.expm1
-        sig: "Float ~> Float"
-        impl: math_expm1
-        total: true
-      - name: math.factorial
-        sig: "Float ~> Float"
-        impl: math_factorial
-        total: true
-      - name: math.floor
-        sig: "Float ~> Float"
-        impl: math_floor
-        total: true
-      - name: math.floor_div
-        sig: "(Float * Float) ~> Float"
-        impl: math_floor_div
-        total: true
-      - name: math.fract
-        sig: "Float ~> Float"
-        impl: math_fract
-        total: true
-      - name: math.gcd
-        sig: "(Float * Float) ~> Float"
-        impl: math_gcd
-        total: true
-      - name: math.hypot
-        sig: "(Float * Float) ~> Float"
-        impl: math_hypot
-        total: true
-      - name: math.infinity
-        sig: "Unit ~> Float"
-        impl: math_infinity
-        total: true
-      - name: math.is_finite
-        sig: "Float ~> Bool"
-        impl: math_is_finite
-        total: true
-      - name: math.is_infinite
-        sig: "Float ~> Bool"
-        impl: math_is_infinite
-        total: true
-      - name: math.is_integer
-        sig: "Float ~> Bool"
-        impl: math_is_integer
-        total: true
-      - name: math.is_nan
-        sig: "Float ~> Bool"
-        impl: math_is_nan
-        total: true
-      - name: math.lcm
-        sig: "(Float * Float) ~> Float"
-        impl: math_lcm
-        total: true
-      - name: math.lerp
-        sig: "(Float * Float * Float) ~> Float"
-        impl: math_lerp
-        total: true
-      - name: math.log
-        sig: "Float ~> Float"
-        impl: math_log
-        total: true
-      - name: math.log1p
-        sig: "Float ~> Float"
-        impl: math_log1p
-        total: true
-      - name: math.log10
-        sig: "Float ~> Float"
-        impl: math_log10
-        total: true
-      - name: math.log2
-        sig: "Float ~> Float"
-        impl: math_log2
-        total: true
-      - name: math.map_range
-        sig: "(Float * Float * Float * Float * Float) ~> Float"
-        impl: math_map_range
-        total: true
-      - name: math.max
-        sig: "(Float * Float) ~> Float"
-        impl: math_max
-        total: true
-      - name: math.min
-        sig: "(Float * Float) ~> Float"
-        impl: math_min
-        total: true
-      - name: math.mod
-        sig: "(Float * Float) ~> Float"
-        impl: math_mod
-        total: true
-      - name: math.mul
-        sig: "(Float * Float) ~> Float"
-        impl: math_mul
-        total: true
-      - name: math.nan
-        sig: "Unit ~> Float"
-        impl: math_nan
-        total: true
-      - name: math.pi
-        sig: "Unit ~> Float"
-        impl: math_pi
-        total: true
-      - name: math.pow
-        sig: "(Float * Float) ~> Float"
-        impl: math_pow
-        total: true
-      - name: math.radians
-        sig: "Float ~> Float"
-        impl: math_radians
-        total: true
-      - name: math.round
-        sig: "Float ~> Float"
-        impl: math_round
-        total: true
-      - name: math.round_to
-        sig: "(Float * Float) ~> Float"
-        impl: math_round_to
-        total: true
-      - name: math.sign
-        sig: "Float ~> Float"
-        impl: math_sign
-        total: true
-      - name: math.sin
-        sig: "Float ~> Float"
-        impl: math_sin
-        total: true
-      - name: math.sinh
-        sig: "Float ~> Float"
-        impl: math_sinh
-        total: true
-      - name: math.sqrt
-        sig: "Float ~> Float"
-        impl: math_sqrt
-        total: true
-      - name: math.sub
-        sig: "(Float * Float) ~> Float"
-        impl: math_sub
-        total: true
-      - name: math.tan
-        sig: "Float ~> Float"
-        impl: math_tan
-        total: true
-      - name: math.tanh
-        sig: "Float ~> Float"
-        impl: math_tanh
-        total: true
-      - name: math.tau
-        sig: "Unit ~> Float"
-        impl: math_tau
-        total: true
-      - name: math.trunc
-        sig: "Float ~> Float"
-        impl: math_trunc
-        total: true
-  str:
-    atoms:
-      - name: str.upper
-        sig: "String ~> String"
-        impl: str_upper
-        total: true
-      - name: str.lower
-        sig: "String ~> String"
-        impl: str_lower
-        total: true
-      - name: str.trim
-        sig: "String ~> String"
-        impl: str_trim
-        total: true
-      - name: str.trim_start
-        sig: "String ~> String"
-        impl: str_trim_start
-        total: true
-      - name: str.trim_end
-        sig: "String ~> String"
-        impl: str_trim_end
-        total: true
-      - name: str.trim_matches
-        sig: "(String * String) ~> String"
-        impl: str_trim_matches
-        total: true
-      - name: str.reverse
-        sig: "String ~> String"
-        impl: str_reverse
-        total: true
-      - name: str.length
-        sig: "String ~> Float"
-        impl: str_length
-        total: true
-      - name: str.concat
-        sig: "(String * String) ~> String"
-        impl: str_concat
-        total: true
-      - name: str.is_empty
-        sig: "String ~> Bool"
-        impl: str_is_empty
-        total: true
-      - name: str.equals
-        sig: "(String * String) ~> Bool"
-        impl: str_equals
-        total: true
-      - name: str.is_alpha
-        sig: "String ~> Bool"
-        impl: str_is_alpha
-        total: true
-      - name: str.is_numeric
-        sig: "String ~> Bool"
-        impl: str_is_numeric
-        total: true
-      - name: str.is_alphanumeric
-        sig: "String ~> Bool"
-        impl: str_is_alphanumeric
-        total: true
-      - name: str.capitalize
-        sig: "String ~> String"
-        impl: str_capitalize
-        total: true
-      - name: str.title_case
-        sig: "String ~> String"
-        impl: str_title_case
-        total: true
-      - name: str.snake_case
-        sig: "String ~> String"
-        impl: str_snake_case
-        total: true
-      - name: str.camel_case
-        sig: "String ~> String"
-        impl: str_camel_case
-        total: true
-      - name: str.pascal_case
-        sig: "String ~> String"
-        impl: str_pascal_case
-        total: true
-      - name: str.kebab_case
-        sig: "String ~> String"
-        impl: str_kebab_case
-        total: true
-      - name: str.contains
-        sig: "(String * String) ~> Bool"
-        impl: str_contains
-        total: true
-      - name: str.starts_with
-        sig: "(String * String) ~> Bool"
-        impl: str_starts_with
-        total: true
-      - name: str.ends_with
-        sig: "(String * String) ~> Bool"
-        impl: str_ends_with
-        total: true
-      - name: str.count
-        sig: "(String * String) ~> Float"
-        impl: str_count
-        total: true
-      - name: str.find
-        sig: "(String * String) ~> Float"
-        impl: str_find
-        total: true
-      - name: str.rfind
-        sig: "(String * String) ~> Float"
-        impl: str_rfind
-        total: true
-      - name: str.levenshtein
-        sig: "(String * String) ~> Float"
-        impl: str_levenshtein
-        total: true
-      - name: str.similarity
-        sig: "(String * String) ~> Float"
-        impl: str_similarity
-        total: true
-      - name: str.split
-        sig: "(String * String) ~> (List String)"
-        impl: str_split
-        total: true
-      - name: str.join
-        sig: "((List String) * String) ~> String"
-        impl: str_join
-        total: true
-      - name: str.replace
-        sig: "(String * String * String) ~> String"
-        impl: str_replace
-        total: true
-      - name: str.replace_first
-        sig: "(String * String * String) ~> String"
-        impl: str_replace_first
-        total: true
-      - name: str.repeat
-        sig: "(String * Float) ~> String"
-        impl: str_repeat
-        total: true
-      - name: str.char_at
-        sig: "(String * Float) ~> String"
-        impl: str_char_at
-        total: true
-      - name: str.slice
-        sig: "(String * Float * Float) ~> String"
-        impl: str_slice
-        total: true
-      - name: str.pad_left
-        sig: "(String * Float * String) ~> String"
-        impl: str_pad_left
-        total: true
-      - name: str.pad_right
-        sig: "(String * Float * String) ~> String"
-        impl: str_pad_right
-        total: true
-      - name: str.strip_prefix
-        sig: "(String * String) ~> String"
-        impl: str_strip_prefix
-        total: true
-      - name: str.strip_suffix
-        sig: "(String * String) ~> String"
-        impl: str_strip_suffix
-        total: true
-      - name: str.lines
-        sig: "String ~> (List String)"
-        impl: str_lines
-        total: true
-      - name: str.split_at
-        sig: "(String * Float) ~> (List String)"
-        impl: str_split_at
-        total: true
-      - name: str.split_whitespace
-        sig: "String ~> (List String)"
-        impl: str_split_whitespace
-        total: true
-      - name: str.truncate
-        sig: "(String * Float) ~> String"
-        impl: str_truncate
-        total: true
-      - name: str.slugify
-        sig: "String ~> String"
-        impl: str_slugify
-        total: true
-      - name: str.word_wrap
-        sig: "(String * Float) ~> String"
-        impl: str_word_wrap
-        total: true
+# lib-utils math atom spec (P-013/T-149/T-151) — 67 atoms, the
+# spec-driven scale pilot. `sig` = handl signature (~> canonical),
+# `impl` = key into the module impl table (`ops/math.rs`
+# `math_impls()`), `total` replaces the `guarantee: True` decl
+# clause (every math op carries one). One module per spec document
+# — the `str` module's atoms live in `atoms-str.yaml`; `bool`
+# stays handl.
+module: math
+atoms:
+  - name: math.abs
+    sig: "Float ~> Float"
+    impl: math_abs
+    total: true
+  - name: math.add
+    sig: "(Float * Float) ~> Float"
+    impl: math_add
+    total: true
+  - name: math.ceil
+    sig: "Float ~> Float"
+    impl: math_ceil
+    total: true
+  - name: math.clamp
+    sig: "(Float * Float * Float) ~> Float"
+    impl: math_clamp
+    total: true
+  - name: math.cos
+    sig: "Float ~> Float"
+    impl: math_cos
+    total: true
+  - name: math.cosh
+    sig: "Float ~> Float"
+    impl: math_cosh
+    total: true
+  - name: math.cbrt
+    sig: "Float ~> Float"
+    impl: math_cbrt
+    total: true
+  - name: math.asin
+    sig: "Float ~> Float"
+    impl: math_asin
+    total: true
+  - name: math.acos
+    sig: "Float ~> Float"
+    impl: math_acos
+    total: true
+  - name: math.atan
+    sig: "Float ~> Float"
+    impl: math_atan
+    total: true
+  - name: math.atan2
+    sig: "(Float * Float) ~> Float"
+    impl: math_atan2
+    total: true
+  - name: math.copysign
+    sig: "(Float * Float) ~> Float"
+    impl: math_copysign
+    total: true
+  - name: math.nextafter
+    sig: "(Float * Float) ~> Float"
+    impl: math_nextafter
+    total: true
+  - name: math.asinh
+    sig: "Float ~> Float"
+    impl: math_asinh
+    total: true
+  - name: math.acosh
+    sig: "Float ~> Float"
+    impl: math_acosh
+    total: true
+  - name: math.atanh
+    sig: "Float ~> Float"
+    impl: math_atanh
+    total: true
+  - name: math.bit_and
+    sig: "(Int * Int) ~> Int"
+    impl: math_bit_and
+    total: true
+  - name: math.bit_not
+    sig: "Int ~> Int"
+    impl: math_bit_not
+    total: true
+  - name: math.bit_or
+    sig: "(Int * Int) ~> Int"
+    impl: math_bit_or
+    total: true
+  - name: math.bit_xor
+    sig: "(Int * Int) ~> Int"
+    impl: math_bit_xor
+    total: true
+  - name: math.shl
+    sig: "(Int * Int) ~> Int"
+    impl: math_shl
+    total: true
+  - name: math.shr
+    sig: "(Int * Int) ~> Int"
+    impl: math_shr
+    total: true
+  - name: math.rotl32
+    sig: "(Int * Int) ~> Int"
+    impl: math_rotl32
+    total: true
+  - name: math.u32
+    sig: "Int ~> Int"
+    impl: math_u32
+    total: true
+  - name: math.degrees
+    sig: "Float ~> Float"
+    impl: math_degrees
+    total: true
+  - name: math.div
+    sig: "(Float * Float) ~> Float"
+    impl: math_div
+    total: true
+  - name: math.e
+    sig: "Unit ~> Float"
+    impl: math_e
+    total: true
+  - name: math.exp
+    sig: "Float ~> Float"
+    impl: math_exp
+    total: true
+  - name: math.exp2
+    sig: "Float ~> Float"
+    impl: math_exp2
+    total: true
+  - name: math.expm1
+    sig: "Float ~> Float"
+    impl: math_expm1
+    total: true
+  - name: math.factorial
+    sig: "Float ~> Float"
+    impl: math_factorial
+    total: true
+  - name: math.floor
+    sig: "Float ~> Float"
+    impl: math_floor
+    total: true
+  - name: math.floor_div
+    sig: "(Float * Float) ~> Float"
+    impl: math_floor_div
+    total: true
+  - name: math.fract
+    sig: "Float ~> Float"
+    impl: math_fract
+    total: true
+  - name: math.gcd
+    sig: "(Float * Float) ~> Float"
+    impl: math_gcd
+    total: true
+  - name: math.hypot
+    sig: "(Float * Float) ~> Float"
+    impl: math_hypot
+    total: true
+  - name: math.infinity
+    sig: "Unit ~> Float"
+    impl: math_infinity
+    total: true
+  - name: math.is_finite
+    sig: "Float ~> Bool"
+    impl: math_is_finite
+    total: true
+  - name: math.is_infinite
+    sig: "Float ~> Bool"
+    impl: math_is_infinite
+    total: true
+  - name: math.is_integer
+    sig: "Float ~> Bool"
+    impl: math_is_integer
+    total: true
+  - name: math.is_nan
+    sig: "Float ~> Bool"
+    impl: math_is_nan
+    total: true
+  - name: math.lcm
+    sig: "(Float * Float) ~> Float"
+    impl: math_lcm
+    total: true
+  - name: math.lerp
+    sig: "(Float * Float * Float) ~> Float"
+    impl: math_lerp
+    total: true
+  - name: math.log
+    sig: "Float ~> Float"
+    impl: math_log
+    total: true
+  - name: math.log1p
+    sig: "Float ~> Float"
+    impl: math_log1p
+    total: true
+  - name: math.log10
+    sig: "Float ~> Float"
+    impl: math_log10
+    total: true
+  - name: math.log2
+    sig: "Float ~> Float"
+    impl: math_log2
+    total: true
+  - name: math.map_range
+    sig: "(Float * Float * Float * Float * Float) ~> Float"
+    impl: math_map_range
+    total: true
+  - name: math.max
+    sig: "(Float * Float) ~> Float"
+    impl: math_max
+    total: true
+  - name: math.min
+    sig: "(Float * Float) ~> Float"
+    impl: math_min
+    total: true
+  - name: math.mod
+    sig: "(Float * Float) ~> Float"
+    impl: math_mod
+    total: true
+  - name: math.mul
+    sig: "(Float * Float) ~> Float"
+    impl: math_mul
+    total: true
+  - name: math.nan
+    sig: "Unit ~> Float"
+    impl: math_nan
+    total: true
+  - name: math.pi
+    sig: "Unit ~> Float"
+    impl: math_pi
+    total: true
+  - name: math.pow
+    sig: "(Float * Float) ~> Float"
+    impl: math_pow
+    total: true
+  - name: math.radians
+    sig: "Float ~> Float"
+    impl: math_radians
+    total: true
+  - name: math.round
+    sig: "Float ~> Float"
+    impl: math_round
+    total: true
+  - name: math.round_to
+    sig: "(Float * Float) ~> Float"
+    impl: math_round_to
+    total: true
+  - name: math.sign
+    sig: "Float ~> Float"
+    impl: math_sign
+    total: true
+  - name: math.sin
+    sig: "Float ~> Float"
+    impl: math_sin
+    total: true
+  - name: math.sinh
+    sig: "Float ~> Float"
+    impl: math_sinh
+    total: true
+  - name: math.sqrt
+    sig: "Float ~> Float"
+    impl: math_sqrt
+    total: true
+  - name: math.sub
+    sig: "(Float * Float) ~> Float"
+    impl: math_sub
+    total: true
+  - name: math.tan
+    sig: "Float ~> Float"
+    impl: math_tan
+    total: true
+  - name: math.tanh
+    sig: "Float ~> Float"
+    impl: math_tanh
+    total: true
+  - name: math.tau
+    sig: "Unit ~> Float"
+    impl: math_tau
+    total: true
+  - name: math.trunc
+    sig: "Float ~> Float"
+    impl: math_trunc
+    total: true

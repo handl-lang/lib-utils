@@ -12,7 +12,7 @@ aggregate capability surface.
 | `src/str.hnl` | `str.*` interface (handls in stdlib `ops::strs`) |
 | `src/utils.hnl` | the aggregate package interface (`cap` declarations) |
 | `src/math.test.hnl` | the `math` test suite |
-| `atoms.yaml` | atom declarations |
+| `atoms.yaml`, `atoms-str.yaml` | atom declarations — one module per spec document (`module:`+`atoms:`); `atoms-<module>.yaml` siblings for extra modules |
 | `pkg.hnl` | manifest — `modules: ["bool", "math", "str"]` |
 | `scripts/hnl-gate.sh`, `workflows/gate.yaml` | the gate / bupha entry |
 
