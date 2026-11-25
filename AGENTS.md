@@ -14,7 +14,7 @@ aggregate capability surface.
 | `src/math.test.hnl` | the `math` test suite |
 | `atoms.yaml` | atom declarations |
 | `pkg.hnl` | manifest — `modules: ["bool", "math", "str"]` |
-| `scripts/hnl-gate.sh`, `ci.sh` | the gate / bupha entry |
+| `scripts/hnl-gate.sh`, `workflows/gate.yaml` | the gate / bupha entry |
 
 ## Contract
 
