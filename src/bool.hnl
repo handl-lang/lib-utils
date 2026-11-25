@@ -2,7 +2,7 @@
 ---
 --- Single source of truth for the `bool` stdlib logic: `and`, `or`, `not`,
 --- `xor`, `nand`, `nor`, `implies`, `eq`. The Rust bridge in
---- `plugin-lib-utils` loads this file via `include_str!`, evaluates it to
+--- `plugin-lib-stdlib` loads this file via `include_str!`, evaluates it to
 --- obtain a record of procs, and applies the requested field to the caller's
 --- boolean argument(s).
 ---

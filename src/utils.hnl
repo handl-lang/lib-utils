@@ -5,7 +5,7 @@
 --- and re-exports modules from other crates (base64, hex, url-rfc,
 --- url-whatwg). The `str` contract is implemented by
 --- `str-handl` and registered separately. The Rust Module/Function impls
---- live in plugin-lib-utils; this .hnl file declares the aggregated
+--- live in plugin-lib-stdlib; this .hnl file declares the aggregated
 --- interface surface (capabilities) for the plugin system.
 ---
 --- The re-exported crates (base64, hex, url-rfc, url-whatwg) each have
